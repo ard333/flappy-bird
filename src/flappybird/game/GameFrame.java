@@ -1,6 +1,8 @@
 package flappybird.game;
 
 import flappybird.agent.Agent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.JFrame;
 
@@ -11,15 +13,15 @@ public class GameFrame extends JFrame {
 	public static int score;
 	
 	//celah
-	public static final int w = 150;
+	public static final int w = 120;
 	//jarak antar pipa
-	public static final int d = 250;
+	public static final int d = 170 + 52;
 	
 	public static int flag = 0;
 	public static long start = 0;
 	
 	private final Score gs;
-	private final int x = 400;
+	private final int x = 300;
 	private final int[] ypoints = {
 		new Random().nextInt(322 - GameFrame.w) +  50,
 		new Random().nextInt(322 - GameFrame.w) +  50,
@@ -32,7 +34,7 @@ public class GameFrame extends JFrame {
 		gs = new Score();
 		GameFrame.start = System.currentTimeMillis();
 		
-		bird = new Bird(152,200,10,5,60);
+		bird = new Bird(135,250,10,3,60);
 		pipe = new Pipe[4];
 		for (int i = 0; i < ypoints.length; i++) {
 			pipe[i] = new Pipe(x + i * GameFrame.d, ypoints[i], 7);
@@ -47,11 +49,24 @@ public class GameFrame extends JFrame {
 		
 		Thread gp = new Thread(gamePanel);
 		gp.start();
-		
+//		//==================================================
+		addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {}
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (KeyEvent.VK_SPACE == e.getKeyCode()) {
+					bird.setFlyStatus();
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {}
+		});
+//		//==================================================
 		add(gamePanel);
 		setResizable(false);
 		setTitle("Flappy Bird");
-		setBounds(10,10,500,600);
+		setBounds(10,10,400,600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);

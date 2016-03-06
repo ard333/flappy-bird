@@ -33,7 +33,7 @@ public class Bird extends Thread {
 	private static final int DOWN = 0;
 	private static final int FLY = 1;
 	private int flag = Bird.FLY;
-	private final double g = 0.0003;
+	private final double g = 0.00055;
 	
 	public Bird(int x, int y, int downv, int upv, int up) {
 		this.x = x;
@@ -127,11 +127,11 @@ public class Bird extends Thread {
 			int oy = (int) (ooldy + 0.8 * g * t * t);
 			y = oy;
 		} else {
-			y--;
+			y = y-3;
 			long end = System.currentTimeMillis();
 		    long t = (end - GameFrame.start);
-			upv += 20 * g * t;
-			if((upvn - 60 * g * t) <= 0){
+			upv += 50 * g * t;
+			if((upvn - 50 * g * t) <= 0){
 				setStatus();
 			}
 		}

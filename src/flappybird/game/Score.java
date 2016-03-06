@@ -22,7 +22,7 @@ public class Score {
 	public void showStartScore(Graphics g) {
 		String s = String.valueOf(GameFrame.score);
 		char[] ss = s.toCharArray();
-		int start = 250 - ss.length * 20;
+		int start = 200 - ss.length * 20;
 		
 		score = new ArrayList<>();
 		for (int i = 0; i < ss.length; i++) {

@@ -5,10 +5,9 @@ import flappybird.agent.Agent;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -44,17 +43,6 @@ public class GamePanel extends JPanel implements Runnable {
 		this.agent = agent;
 		this.isBirdPass = false;
 		
-		//getAction of Agent every 150ms
-		getActionTimer = new Timer(150, (ActionEvent e) -> {
-			agentAction = agent.getAction(env);
-			if (this.agentAction == 1) {
-				bird.setFlyStatus();
-			}
-			deadStatus = false;
-		});
-		
-		getActionTimer.setRepeats(true);
-		getActionTimer.start();
 		pYBird = 200;
 	}
 	
@@ -94,7 +82,7 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 			if (GameFrame.flag == 2) {
 				deadStatus = true;
-				System.out.println("Score "+GameFrame.score);
+				System.out.println("Score \t"+GameFrame.score);
 				pipeFront = 0;
 				bird.reStart();
 				for (Pipe p : pipe) {
@@ -102,15 +90,21 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 			}
 			env.setEnvironment(bird, pipe, pipeFront, deadStatus);
-			
+			//System.out.println(getState(env));
 			this.isBirdPass = false;
 			
 			pYBird = env.getBird().getY();
+			
+			agentAction = agent.getAction(env);
+			if (this.agentAction == 1) {
+				bird.setFlyStatus();
+			}
 			
 			if (GameFrame.flag == 2) {
 				GameFrame.score = 0;
 				GameFrame.start = System.currentTimeMillis();
 				GameFrame.flag = 1;
+				deadStatus = false;
 			}
 			repaint();
 			
@@ -122,8 +116,6 @@ public class GamePanel extends JPanel implements Runnable {
 					Logger.getLogger(GamePanel.class.getName()).log(Level.SEVERE, null, ex);
 				}
 			}
-			
 		}
-		
 	}
 }

@@ -3,7 +3,8 @@
  */
 package flappybird;
 
-import flappybird.agent.RandomActionAgent;
+import flappybird.agent.rl.QLANNBPAgent;
+import flappybird.agent.rl.QLAgent;
 import flappybird.game.GameFrame;
 
 /**
@@ -13,8 +14,19 @@ import flappybird.game.GameFrame;
 public class FlappyBird {
 	
 	public static void main(String[] args) {
-		RandomActionAgent randomAgent = new RandomActionAgent();
-		GameFrame game = new GameFrame(randomAgent);
+		
+		//Q-Learning
+//		QLAgent QLA = new QLAgent(20);
+//		GameFrame game = new GameFrame(QLA);
+		
+		//Combination Q-Learning and Backpropagation
+		QLANNBPAgent QLANNBP = new QLANNBPAgent(true);
+		GameFrame game = new GameFrame(QLANNBP);
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(()->{
+			QLANNBP.dumpWeights();
+//			QLA.dumpTableSize();
+		}));
 	}
 	
 }
