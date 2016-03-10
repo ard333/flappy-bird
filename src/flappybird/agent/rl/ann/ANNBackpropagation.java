@@ -156,6 +156,13 @@ public class ANNBackpropagation {
 		}
 	}
 	
+	public Double[][] getW1() {
+		return this.w1;
+	}
+	public Double[][] getW2() {
+		return this.w2;
+	}
+	
 	private Double sigmoidBipolar(Double input) {
 		return 2/(1 + Math.exp(-input))-1;
 	}

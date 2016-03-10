@@ -18,7 +18,11 @@ import java.util.Random;
 public class QLANNBPAgent implements Agent{
 	
 	private ANNBackpropagation annbpAction0;
+	private Double[][] w1Action0 = new Double[3][4];
+	private Double[][] w2Action0 = new Double[5][1];
 	private ANNBackpropagation annbpAction1;
+	private Double[][] w1Action1 = new Double[3][4];
+	private Double[][] w2Action1 = new Double[5][1];
 	
 	private int cAction;
 	private int pAction;
@@ -36,9 +40,6 @@ public class QLANNBPAgent implements Agent{
 	private double prob;
 	
 	private boolean learningStatus;
-	
-	private boolean nextDone = false;
-	private int maxScoreForConverge = 20;
 	
 	public QLANNBPAgent(boolean learningStatus) {
 		
@@ -143,16 +144,24 @@ public class QLANNBPAgent implements Agent{
 	}
 	
 	private void checkLearningLimit(Environment env) {
-		if (nextDone) {
-			if (pScore >= maxScoreForConverge/2) {
-				this.stopLearning();
+		if (pScore==15) {
+			for (int i = 0; i < this.annbpAction0.getW1().length; i++) {
+				System.arraycopy(this.annbpAction0.getW1()[i], 0, this.w1Action0[i], 0, this.annbpAction0.getW1()[0].length);
+			}
+			for (int i = 0; i < this.annbpAction0.getW2().length; i++) {
+				System.arraycopy(this.annbpAction0.getW2()[i], 0, this.w2Action0[i], 0, this.annbpAction0.getW2()[0].length);
+			}
+			for (int i = 0; i < this.annbpAction1.getW1().length; i++) {
+				System.arraycopy(this.annbpAction1.getW1()[i], 0, this.w1Action1[i], 0, this.annbpAction1.getW1()[0].length);
+			}
+			for (int i = 0; i < this.annbpAction1.getW2().length; i++) {
+				System.arraycopy(this.annbpAction1.getW2()[i], 0, this.w2Action1[i], 0, this.annbpAction1.getW2()[0].length);
 			}
 		}
-		if (env.getDeadStatus()) {
-			if (pScore >= maxScoreForConverge) {
-				maxScoreForConverge = pScore;
-				nextDone = true;
-			}
+		if (pScore >= 20) {
+			this.stopLearning();
+			this.annbpAction0.setWeight(w1Action0, w2Action0);
+			this.annbpAction1.setWeight(w1Action1, w2Action1);
 		}
 	}
 	
