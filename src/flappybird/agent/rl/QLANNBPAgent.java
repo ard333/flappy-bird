@@ -158,7 +158,7 @@ public class QLANNBPAgent implements Agent{
 				System.arraycopy(this.annbpAction1.getW2()[i], 0, this.w2Action1[i], 0, this.annbpAction1.getW2()[0].length);
 			}
 		}
-		if (pScore >= 30) {
+		if (pScore >= 25) {
 			this.stopLearning();
 			this.annbpAction0.setWeight(w1Action0, w2Action0);
 			this.annbpAction1.setWeight(w1Action1, w2Action1);
