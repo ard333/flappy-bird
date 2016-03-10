@@ -72,7 +72,7 @@ public class ANNBackpropagation {
 	
 	public void trainOnce(Double[] input, Double[] expectedOutput) {
 		System.arraycopy(input, 0, this.X, 0, input.length);
-
+		
 		this.feedForward();
 		this.backPropagation(expectedOutput);
 	}
@@ -82,10 +82,10 @@ public class ANNBackpropagation {
 	}
 	
 	private void feedForward() {
-		this.setOutputZ();
 		this.setOutputY();
+		this.setOutputZ();
 	}
-	private void setOutputZ() {
+	private void setOutputY() {
 		Double temp[] = new Double[numOfHidden];
 		for (int a = 0; a < numOfHidden; a++) {
 			temp[a] = 0.0;
@@ -99,7 +99,7 @@ public class ANNBackpropagation {
 			this.Y[j] = this.sigmoidBipolar(temp[j]);
 		}
 	}
-	private void setOutputY() {
+	private void setOutputZ() {
 		Double temp[] = new Double[numOfOutput];
 		for (int a = 0; a < numOfOutput; a++) {
 			temp[a] = 0.0;
