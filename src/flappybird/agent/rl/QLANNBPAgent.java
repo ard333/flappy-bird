@@ -144,7 +144,7 @@ public class QLANNBPAgent implements Agent{
 	}
 	
 	private void checkLearningLimit(Environment env) {
-		if (pScore==15) {
+		if (pScore==20) {
 			for (int i = 0; i < this.annbpAction0.getW1().length; i++) {
 				System.arraycopy(this.annbpAction0.getW1()[i], 0, this.w1Action0[i], 0, this.annbpAction0.getW1()[0].length);
 			}
@@ -158,7 +158,7 @@ public class QLANNBPAgent implements Agent{
 				System.arraycopy(this.annbpAction1.getW2()[i], 0, this.w2Action1[i], 0, this.annbpAction1.getW2()[0].length);
 			}
 		}
-		if (pScore >= 20) {
+		if (pScore >= 30) {
 			this.stopLearning();
 			this.annbpAction0.setWeight(w1Action0, w2Action0);
 			this.annbpAction1.setWeight(w1Action1, w2Action1);
