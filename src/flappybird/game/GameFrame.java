@@ -1,8 +1,6 @@
 package flappybird.game;
 
 import flappybird.agent.Agent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.JFrame;
 
@@ -49,20 +47,7 @@ public class GameFrame extends JFrame {
 		
 		Thread gp = new Thread(gamePanel);
 		gp.start();
-//		//==================================================
-		addKeyListener(new KeyListener() {
-			@Override
-			public void keyTyped(KeyEvent e) {}
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if (KeyEvent.VK_SPACE == e.getKeyCode()) {
-					bird.setFlyStatus();
-				}
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {}
-		});
-//		//==================================================
+		
 		add(gamePanel);
 		setResizable(false);
 		setTitle("Flappy Bird");

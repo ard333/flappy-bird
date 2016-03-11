@@ -144,7 +144,7 @@ public class QLANNBPAgent implements Agent{
 	}
 	
 	private void checkLearningLimit(Environment env) {
-		if (pScore==20) {
+		if (pScore==15) {
 			for (int i = 0; i < this.annbpAction0.getW1().length; i++) {
 				System.arraycopy(this.annbpAction0.getW1()[i], 0, this.w1Action0[i], 0, this.annbpAction0.getW1()[0].length);
 			}
