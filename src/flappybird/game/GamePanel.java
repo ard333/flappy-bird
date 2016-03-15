@@ -5,7 +5,6 @@ import flappybird.agent.Agent;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -90,7 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 			}
 			env.setEnvironment(bird, pipe, pipeFront, deadStatus);
-			//System.out.println(getState(env));
+			
 			this.isBirdPass = false;
 			
 			pYBird = env.getBird().getY();

@@ -46,9 +46,11 @@ public class ANNBackpropagation {
 		this.w2 = new Double[numOfHidden+1][numOfOutput];
 		this.deltaW1 = new Double[numOfInput+1][numOfHidden];
 		this.deltaW2 = new Double[numOfHidden+1][numOfOutput];
-		
+		this.initWeight();
+	}
+	
+	public void initWeight() {
 		Random r = new Random();
-		
 		for (int i = 0; i < this.numOfInput+1; i++) {
 			for (int j = 0; j < this.numOfHidden; j++) {
 				this.w1[i][j] = 0 + (1 - (0)) * r.nextDouble();//0:1

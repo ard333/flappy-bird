@@ -6,10 +6,12 @@ package flappybird.agent.rl;
 import flappybird.agent.Agent;
 import flappybird.agent.rl.ann.ANNBackpropagation;
 import flappybird.game.Environment;
+import java.awt.event.ActionEvent;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import javax.swing.Timer;
 
 /**
  *
@@ -39,6 +41,10 @@ public class QLANNBPAgent implements Agent{
 	private final double learningRateQL = 0.9;
 	private double prob;
 	
+	private final Timer resetWeightsTime;
+	private int pTotalScoreForReinit;
+	private int cTotalScoreForReinit;
+	
 	private boolean learningStatus;
 	
 	public QLANNBPAgent(boolean learningStatus) {
@@ -57,6 +63,20 @@ public class QLANNBPAgent implements Agent{
 		
 		this.cState = new ArrayList<>();
 		this.learningStatus = learningStatus;
+		
+		resetWeightsTime = new Timer(1000 * 60 * 1, (ActionEvent e) -> {
+			if (this.learningStatus) {
+				if (pTotalScoreForReinit == cTotalScoreForReinit) {
+					System.out.println("Re-init weights...");
+					annbpAction0.initWeight();
+					annbpAction1.initWeight();
+					cTotalScoreForReinit = pTotalScoreForReinit = 0;
+				}
+				pTotalScoreForReinit = cTotalScoreForReinit;
+			}
+		});
+		resetWeightsTime.setRepeats(true);
+		resetWeightsTime.start();
 		
 		System.out.println(new Time(System.currentTimeMillis()));
 		
@@ -98,6 +118,7 @@ public class QLANNBPAgent implements Agent{
 		double reward = 0;
 		//======================================================================
 		if (env.getDeadStatus()) {
+			cTotalScoreForReinit += pScore;
 			reward -= 1.0;
 		} else {
 			reward += 0.1;
@@ -144,7 +165,7 @@ public class QLANNBPAgent implements Agent{
 	}
 	
 	private void checkLearningLimit(Environment env) {
-		if (pScore==15) {
+		if (pScore == 14) {
 			for (int i = 0; i < this.annbpAction0.getW1().length; i++) {
 				System.arraycopy(this.annbpAction0.getW1()[i], 0, this.w1Action0[i], 0, this.annbpAction0.getW1()[0].length);
 			}
@@ -158,7 +179,7 @@ public class QLANNBPAgent implements Agent{
 				System.arraycopy(this.annbpAction1.getW2()[i], 0, this.w2Action1[i], 0, this.annbpAction1.getW2()[0].length);
 			}
 		}
-		if (pScore >= 25) {
+		if (pScore >= 30) {
 			this.stopLearning();
 			this.annbpAction0.setWeight(w1Action0, w2Action0);
 			this.annbpAction1.setWeight(w1Action1, w2Action1);
