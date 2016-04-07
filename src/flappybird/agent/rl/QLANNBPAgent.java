@@ -64,7 +64,7 @@ public class QLANNBPAgent implements Agent{
 		this.cState = new ArrayList<>();
 		this.learningStatus = learningStatus;
 		
-		resetWeightsTime = new Timer(1000 * 60 * 1, (ActionEvent e) -> {
+		resetWeightsTime = new Timer(1000 * 60 * 2, (ActionEvent e) -> {
 			if (this.learningStatus) {
 				if (pTotalScoreForReinit == cTotalScoreForReinit) {
 					System.out.println("Re-init weights...");
