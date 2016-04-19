@@ -63,10 +63,9 @@ public class QLAgent implements Agent{
 		//======================================================================
 		if (env.getDeadStatus()) {
 			reward -= 100;
+		} else {
+			reward += 1;
 		}
-//		else {
-//			reward += 1;
-//		}
 		if (env.getScore() > pScore) {
 			reward += 100;
 		}
@@ -113,8 +112,8 @@ public class QLAgent implements Agent{
 	private ArrayList<Integer> getState(Environment env) {
 		ArrayList<Integer> stateResult = new ArrayList<>();
 		
-		int diffBirdBottomPipe = Math.round(((env.getPipe()[env.getPipeFront()].getY()+env.getPipeGap())-env.getBird().getY())/10);
-		int distanceBirdToPipe = Math.round((env.getPipe()[env.getPipeFront()].getX()-env.getBird().getX())/30);
+		int diffBirdBottomPipe = Math.round(((env.getPipe()[env.getPipeFront()].getY()+env.getPipeGap())-env.getBird().getY())/15);
+		int distanceBirdToPipe = Math.round((env.getPipe()[env.getPipeFront()].getX()-env.getBird().getX())/15);
 		if (distanceBirdToPipe<0) {
 			distanceBirdToPipe=0;
 		}
@@ -125,7 +124,7 @@ public class QLAgent implements Agent{
 	}
 	
 	private HashMap.Entry<Integer, Double> getBestActionValue(ArrayList<Integer> stateChoose) {
-		int actionAtMax = r.nextInt(2);
+		int actionAtMax = 0;
 		double valueAtMax = 0.0;
 		HashMap<Integer, Double> temp = this.QTable.get(stateChoose);
 		if (temp!=null) {

@@ -16,7 +16,7 @@ public class FlappyBird {
 	public static void main(String[] args) {
 		
 		//Q-Learning
-//		QLAgent QLA = new QLAgent(20);
+//		QLAgent QLA = new QLAgent(25);
 //		GameFrame game = new GameFrame(QLA);
 		
 		//Combination Q-Learning and Backpropagation
@@ -24,7 +24,7 @@ public class FlappyBird {
 		GameFrame game = new GameFrame(QLANNBP);
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(()->{
-			QLANNBP.dumpWeights();
+//			QLANNBP.dumpWeights();
 //			QLA.dumpTableSize();
 		}));
 	}
