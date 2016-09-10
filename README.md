@@ -5,4 +5,5 @@ Based on [haolidong repository](https://github.com/haolidong/FlappyBird)
 
 #### Agent available
 1. Q-Learning
-2. Combination Q-Learning and Backpropagation
+2. SARSA
+3. Q-Learning combined with Backpropagation
