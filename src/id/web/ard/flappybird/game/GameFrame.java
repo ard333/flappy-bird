@@ -1,6 +1,6 @@
-package flappybird.game;
+package id.web.ard.flappybird.game;
 
-import flappybird.agent.Agent;
+import id.web.ard.flappybird.agent.Agent;
 import java.util.Random;
 import javax.swing.JFrame;
 

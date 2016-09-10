@@ -1,13 +1,13 @@
 /*
  * Ardiansyah | http://ard.web.id
  */
-package flappybird.agent.rl.ann;
+package id.web.ard.flappybird.agent.rl.ann;
 
 import java.util.Random;
 
 /**
  *
- * @author ardiansyah
+ * @author Ardiansyah <ard333.ardiansyah@gmail.com>
  */
 public class ANNBackpropagation {
 	private final Integer numOfInput;

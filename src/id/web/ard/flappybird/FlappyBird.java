@@ -1,16 +1,16 @@
 /*
  * Ardiansyah | http://ard.web.id
  */
-package flappybird;
+package id.web.ard.flappybird;
 
-import flappybird.agent.rl.QLANNBPAgent;
-import flappybird.agent.rl.QLAgent;
-import flappybird.agent.rl.SARSAAgent;
-import flappybird.game.GameFrame;
+import id.web.ard.flappybird.agent.rl.QLANNBPAgent;
+import id.web.ard.flappybird.agent.rl.QLAgent;
+import id.web.ard.flappybird.agent.rl.SARSAAgent;
+import id.web.ard.flappybird.game.GameFrame;
 
 /**
  *
- * @author ardiansyah
+ * @author Ardiansyah <ard333.ardiansyah@gmail.com>
  */
 public class FlappyBird {
 	

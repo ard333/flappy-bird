@@ -1,7 +1,7 @@
 /*
  * Ardiansyah | http://ard.web.id
  */
-package flappybird.game;
+package id.web.ard.flappybird.game;
 
 /**
  *
