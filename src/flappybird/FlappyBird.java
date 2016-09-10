@@ -5,6 +5,7 @@ package flappybird;
 
 import flappybird.agent.rl.QLANNBPAgent;
 import flappybird.agent.rl.QLAgent;
+import flappybird.agent.rl.SARSAAgent;
 import flappybird.game.GameFrame;
 
 /**
@@ -16,12 +17,17 @@ public class FlappyBird {
 	public static void main(String[] args) {
 		
 		//Q-Learning
-//		QLAgent QLA = new QLAgent(25);
-//		GameFrame game = new GameFrame(QLA);
+//		QLAgent agent = new QLAgent(120);
+
+		//SARSA
+		SARSAAgent agent = new SARSAAgent(120);
 		
 		//Combination Q-Learning and Backpropagation
-		QLANNBPAgent QLANNBP = new QLANNBPAgent(true);
-		GameFrame game = new GameFrame(QLANNBP);
+//		QLANNBPAgent agent = new QLANNBPAgent(true);
+		
+		
+		
+		GameFrame game = new GameFrame(agent);
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(()->{
 //			QLANNBP.dumpWeights();

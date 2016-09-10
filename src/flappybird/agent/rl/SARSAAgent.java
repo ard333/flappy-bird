@@ -16,7 +16,7 @@ import javax.swing.Timer;
  *
  * @author ardiansyah
  */
-public class QLAgent implements Agent{
+public class SARSAAgent implements Agent{
 	
 	private HashMap<ArrayList<Integer>, HashMap<Integer, Double>> QTable;
 	
@@ -38,7 +38,7 @@ public class QLAgent implements Agent{
 	private final Timer learningTime;
 	private boolean learningStatus;
 	
-	public QLAgent(int minute) {
+	public SARSAAgent(int minute) {
 		this.r = new Random();
 		this.epsilon = 0.0;
 		this.learningRateQL = 0.9;
@@ -96,8 +96,8 @@ public class QLAgent implements Agent{
 				//update Q value
 				this.QTable.get(this.pState).replace(
 					this.pAction,
-						/* Q(S,A) + α[R + γ maxQ(S',a) - Q(S,A)] */
-					(pQas + this.learningRateQL * (reward + (this.discount*this.getBestActionValue(this.cState).getValue()) - pQas))
+					/* Q(S,A) + α[R + γ Q(S',A') - Q(S,A)] */
+					(pQas + this.learningRateQL * (reward + (this.discount*this.QTable.get(this.cState).get(cAction)) - pQas))
 				);
 			}
 		}
