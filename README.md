@@ -7,3 +7,4 @@ Based on [haolidong repository](https://github.com/haolidong/FlappyBird)
 1. Q-Learning
 2. SARSA
 3. Q-Learning combined with Backpropagation
+4. SARSA combined with Backpropagation
