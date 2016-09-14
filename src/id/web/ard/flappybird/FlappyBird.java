@@ -5,6 +5,7 @@ package id.web.ard.flappybird;
 
 import id.web.ard.flappybird.agent.rl.QLANNBPAgent;
 import id.web.ard.flappybird.agent.rl.QLAgent;
+import id.web.ard.flappybird.agent.rl.SARSAANNBPAgent;
 import id.web.ard.flappybird.agent.rl.SARSAAgent;
 import id.web.ard.flappybird.game.GameFrame;
 
@@ -20,12 +21,13 @@ public class FlappyBird {
 //		QLAgent agent = new QLAgent(120);
 
 		//SARSA
-		SARSAAgent agent = new SARSAAgent(120);
+//		SARSAAgent agent = new SARSAAgent(120);
 		
 		//Combination Q-Learning and Backpropagation
 //		QLANNBPAgent agent = new QLANNBPAgent(true);
 		
-		
+		//Combination SARSA and Backpropagation
+		SARSAANNBPAgent agent = new SARSAANNBPAgent(true);
 		
 		GameFrame game = new GameFrame(agent);
 		
