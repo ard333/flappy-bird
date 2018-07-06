@@ -1,11 +1,8 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird.game;
+package com.ard333.flappybird.game;
 
 /**
  *
- * @author ardiansyah
+ * @author Ardiansyah <ard333.ardiansyah@gmail.com>
  */
 public class Environment {
 	private Bird bird;	

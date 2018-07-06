@@ -1,9 +1,6 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird.agent;
+package com.ard333.flappybird.agent;
 
-import id.web.ard.flappybird.game.Environment;
+import com.ard333.flappybird.game.Environment;
 import java.util.Random;
 
 /**

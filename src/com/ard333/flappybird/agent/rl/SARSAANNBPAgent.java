@@ -1,11 +1,8 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird.agent.rl;
+package com.ard333.flappybird.agent.rl;
 
-import id.web.ard.flappybird.agent.Agent;
-import id.web.ard.flappybird.agent.rl.ann.ANNBackpropagation;
-import id.web.ard.flappybird.game.Environment;
+import com.ard333.flappybird.agent.Agent;
+import com.ard333.flappybird.agent.rl.ann.ANNBackpropagation;
+import com.ard333.flappybird.game.Environment;
 import java.awt.event.ActionEvent;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -17,7 +14,7 @@ import javax.swing.Timer;
  *
  * @author Ardiansyah <ard333.ardiansyah@gmail.com>
  */
-public class QLANNBPAgent implements Agent{
+public class SARSAANNBPAgent implements Agent{
 	
 	private ANNBackpropagation annbpAction0;
 	private Double[][] w1Action0 = new Double[3][4];
@@ -47,7 +44,7 @@ public class QLANNBPAgent implements Agent{
 	
 	private boolean learningStatus;
 	
-	public QLANNBPAgent(boolean learningStatus) {
+	public SARSAANNBPAgent(boolean learningStatus) {
 		
 		annbpAction0 = new ANNBackpropagation(2, 4, 1, 0.9);
 		annbpAction1 = new ANNBackpropagation(2, 4, 1, 0.9);
@@ -143,8 +140,8 @@ public class QLANNBPAgent implements Agent{
 		if (learningStatus) {
 			Double[] expectedOut = new Double[1];
 			Double pQas = this.approxValue(pState, pAction);
-
-			expectedOut[0] = (pQas + this.learningRateQL * (reward + (this.discount * this.getBestActionValue(this.cState).getValue()) - pQas));
+			
+			expectedOut[0] = (pQas + this.learningRateQL * (reward + (this.discount * this.approxValue(this.cState, this.cAction)) - pQas));
 			
 			if (this.pAction == 0) {
 				this.annbpAction0.trainOnce(this.convertState(pState), expectedOut);

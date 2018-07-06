@@ -1,6 +1,6 @@
-package id.web.ard.flappybird.game;
+package com.ard333.flappybird.game;
 
-import id.web.ard.flappybird.FlappyBird;
+import com.ard333.flappybird.FlappyBird;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;

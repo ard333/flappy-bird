@@ -1,13 +1,10 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird;
+package com.ard333.flappybird;
 
-import id.web.ard.flappybird.agent.rl.QLANNBPAgent;
-import id.web.ard.flappybird.agent.rl.QLAgent;
-import id.web.ard.flappybird.agent.rl.SARSAANNBPAgent;
-import id.web.ard.flappybird.agent.rl.SARSAAgent;
-import id.web.ard.flappybird.game.GameFrame;
+import com.ard333.flappybird.agent.rl.QLANNBPAgent;
+import com.ard333.flappybird.agent.rl.QLAgent;
+import com.ard333.flappybird.agent.rl.SARSAANNBPAgent;
+import com.ard333.flappybird.agent.rl.SARSAAgent;
+import com.ard333.flappybird.game.GameFrame;
 
 /**
  *

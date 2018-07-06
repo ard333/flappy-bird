@@ -1,7 +1,4 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird.agent.rl.ann;
+package com.ard333.flappybird.agent.rl.ann;
 
 import java.util.Random;
 

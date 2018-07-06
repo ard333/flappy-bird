@@ -1,11 +1,8 @@
-/*
- * Ardiansyah | http://ard.web.id
- */
-package id.web.ard.flappybird.agent.rl;
+package com.ard333.flappybird.agent.rl;
 
-import id.web.ard.flappybird.agent.Agent;
-import id.web.ard.flappybird.game.Environment;
-import id.web.ard.flappybird.game.GameFrame;
+import com.ard333.flappybird.agent.Agent;
+import com.ard333.flappybird.game.Environment;
+import com.ard333.flappybird.game.GameFrame;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
